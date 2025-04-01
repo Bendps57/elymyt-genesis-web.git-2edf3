@@ -34,20 +34,22 @@ const projects: Project[] = [
     url: "https://www.centredeformationlorraine.fr"
   },
   {
-    id: "eco-shop",
-    title: "Eco-Shop",
+    id: "pulsar-esport",
+    title: "Pulsar eSport",
     category: "E-commerce",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=600&h=400&q=80",
-    description: "Création d'une boutique en ligne spécialisée dans les produits écologiques.",
-    results: "Taux de conversion amélioré de 25%"
+    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&h=400&q=80",
+    description: "Site e-commerce et plateforme communautaire pour une équipe d'eSport professionnelle.",
+    results: "Croissance de la base de fans et augmentation des ventes de produits dérivés",
+    url: "https://pulsar-esport.fr/"
   },
   {
-    id: "travelwise",
-    title: "TravelWise",
+    id: "squad-esports",
+    title: "Squad eSports",
     category: "Blog",
-    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600&h=400&q=80",
-    description: "Blog de voyage avec intégration de systèmes de réservation et de conseils personnalisés.",
-    results: "12,000 visiteurs mensuels en 6 mois"
+    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&h=400&q=80",
+    description: "Plateforme d'actualités et de contenu sur l'univers du gaming et des compétitions eSport.",
+    results: "12,000 visiteurs mensuels et forte engagement de la communauté",
+    url: "https://squadesports.com/"
   }
 ];
 

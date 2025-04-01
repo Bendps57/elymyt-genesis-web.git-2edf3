@@ -54,36 +54,36 @@ const projects: Project[] = [
     url: "https://www.centredeformationlorraine.fr"
   },
   {
-    id: "eco-shop",
-    title: "Eco-Shop",
+    id: "pulsar-esport",
+    title: "Pulsar eSport",
     category: "E-commerce",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&h=800&q=80",
-    description: "Création d'une boutique en ligne spécialisée dans les produits écologiques et durables.",
-    challenge: "Eco-Shop avait besoin d'une plateforme e-commerce reflétant leurs valeurs écologiques, tout en offrant une expérience d'achat fluide et un système de gestion des stocks efficace.",
-    solution: "Développement d'une boutique en ligne sur mesure avec une interface utilisateur intuitive, un système de paiement sécurisé et un back-office complet pour la gestion des produits et des commandes.",
+    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&h=800&q=80",
+    description: "Site e-commerce et plateforme communautaire pour une équipe d'eSport professionnelle.",
+    challenge: "Pulsar eSport avait besoin d'une plateforme complète intégrant à la fois un site communautaire pour leurs fans et une boutique en ligne pour leurs produits dérivés.",
+    solution: "Création d'un site multi-fonctionnel avec un espace communautaire, un blog d'actualités, et une boutique e-commerce complète avec système de paiement sécurisé.",
     results: [
-      "Taux de conversion amélioré de 25%",
-      "Panier moyen augmenté de 35%",
-      "Réduction du taux d'abandon de panier de 40%"
+      "Forte augmentation de l'engagement des fans",
+      "Croissance de 40% des ventes de produits dérivés",
+      "Centralisation efficace de la présence en ligne de l'équipe"
     ],
-    technologies: ["WooCommerce", "WordPress", "PHP", "MySQL", "Stripe"],
-    url: ""
+    technologies: ["WordPress", "WooCommerce", "BuddyPress", "JavaScript", "PHP"],
+    url: "https://pulsar-esport.fr/"
   },
   {
-    id: "travelwise",
-    title: "TravelWise",
+    id: "squad-esports",
+    title: "Squad eSports",
     category: "Blog",
-    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&h=800&q=80",
-    description: "Blog de voyage avec intégration de systèmes de réservation et de conseils personnalisés.",
-    challenge: "TravelWise souhaitait créer une plateforme de contenu riche autour du voyage, tout en intégrant des fonctionnalités de monétisation et de recommandation personnalisée.",
-    solution: "Création d'un blog moderne avec un système de catégorisation avancé, une architecture de contenu optimisée pour le SEO, et l'intégration d'APIs de réservation de voyages.",
+    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&h=800&q=80",
+    description: "Plateforme d'actualités et de contenu sur l'univers du gaming et des compétitions eSport.",
+    challenge: "Squad eSports cherchait à créer un média en ligne dédié aux actualités eSport avec un système de gestion de contenu efficace et une interface attrayante pour les lecteurs.",
+    solution: "Développement d'une plateforme de blog optimisée pour le référencement avec catégorisation avancée, système de commentaires, et intégration de médias sociaux.",
     results: [
-      "12,000 visiteurs mensuels en 6 mois",
-      "Taux d'engagement de 4 minutes en moyenne par visite",
-      "Revenus d'affiliation multipliés par 3"
+      "12,000 visiteurs mensuels atteints en 6 mois",
+      "Position de référence dans l'actualité eSport francophone",
+      "Monétisation efficace via des partenariats stratégiques"
     ],
-    technologies: ["Gatsby", "React", "GraphQL", "Netlify CMS", "APIs externes"],
-    url: ""
+    technologies: ["WordPress", "Gutenberg", "Advanced Custom Fields", "SEO Yoast", "Google Analytics"],
+    url: "https://squadesports.com/"
   },
   {
     id: "fitlifepro",
@@ -99,22 +99,6 @@ const projects: Project[] = [
       "Taux de satisfaction client de 98%"
     ],
     technologies: ["WordPress", "Elementor Pro", "WooCommerce Bookings", "PHP"],
-    url: "#"
-  },
-  {
-    id: "tech-solutions",
-    title: "Tech Solutions",
-    category: "Application Web",
-    image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1200&h=800&q=80",
-    description: "Plateforme de gestion de projets IT pour une entreprise de services numériques.",
-    challenge: "Tech Solutions avait besoin d'une application web sur mesure pour gérer leurs projets, ressources et clients, tout en offrant un tableau de bord analytique pour suivre la performance.",
-    solution: "Création d'une application web complète avec gestion des utilisateurs, des projets, des tâches et des ressources, accompagnée d'un tableau de bord analytique personnalisable.",
-    results: [
-      "Productivité interne augmentée de 35%",
-      "Réduction des délais de livraison de 25%",
-      "Amélioration de la satisfaction client de 40%"
-    ],
-    technologies: ["React", "Node.js", "Express", "MongoDB", "Redux", "JWT"],
     url: "#"
   },
   {

@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,18 +14,18 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Marie Dupont",
-    company: "Agence Créative",
-    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-    content: "Travailler avec eLimyt a été une expérience exceptionnelle. Leur équipe a transformé notre vision en un site web incroyable, en respectant tous nos objectifs. Je les recommande vivement !",
+    name: "Adil",
+    company: "Gérant, Vitall Sécurité",
+    avatar: "https://randomuser.me/api/portraits/men/43.jpg",
+    content: "eLimyt a créé un site web qui répond parfaitement à nos besoins. Notre entreprise de sécurité avait besoin d'un site professionnel qui inspire confiance, et c'est exactement ce que nous avons obtenu. Le processus a été simple et rapide, et le résultat est impressionnant.",
     rating: 5
   },
   {
     id: 2,
-    name: "Jean Martin",
-    company: "Tech Solutions",
+    name: "Eric",
+    company: "Responsable de formation, Centre de Formation Lorraine",
     avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-    content: "Notre site e-commerce a vu ses ventes augmenter de 35% en seulement deux mois après la refonte par eLimyt. Leur expertise en UX et en conversion est inégalée.",
+    content: "Nous cherchions à moderniser notre présence en ligne pour mieux présenter nos formations. eLimyt a dépassé nos attentes avec un site intuitif qui a considérablement augmenté nos inscriptions. Leur expertise technique et leur compréhension de nos besoins ont fait toute la différence.",
     rating: 5
   },
   {
@@ -87,7 +86,6 @@ const Testimonials = () => {
     }
   };
   
-  // Auto-slide testimonials
   useEffect(() => {
     const interval = setInterval(() => {
       if (isVisible && !isAnimating) {
@@ -100,7 +98,6 @@ const Testimonials = () => {
   
   return (
     <section ref={sectionRef} className="section-padding bg-muted relative overflow-hidden">
-      {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-elimyt-blue/5"></div>
         <div className="absolute bottom-10 right-10 w-80 h-80 rounded-full bg-elimyt-purple/5"></div>
