@@ -42,14 +42,14 @@ const services: ServiceProps[] = [
       "Optimisation des performances",
       "Hébergement et nom de domaine (1 an)"
     ],
-    price: "À partir de 990€",
+    price: "249,90€",
     features: [
       "4-6 pages",
       "Design moderne",
       "Responsive mobile",
       "Formulaire de contact",
       "Optimisation SEO de base",
-      "Livraison sous 3 semaines"
+      "Livraison sous 5 jours"
     ]
   },
   {
@@ -64,14 +64,14 @@ const services: ServiceProps[] = [
       "Design optimisé pour la conversion",
       "Suivi des commandes et des stocks"
     ],
-    price: "À partir de 1990€",
+    price: "790€",
     features: [
       "Catalogue de produits",
       "Panier d'achat",
       "Paiement sécurisé",
       "Gestion des stocks",
       "Dashboard admin",
-      "Livraison sous 5 semaines"
+      "Livraison sous 2 semaines"
     ],
     popular: true
   },

@@ -11,16 +11,16 @@ import {
   Search,
   Zap
 } from "lucide-react";
-import { motion } from "framer-motion";
 
 interface ServiceCardProps {
   icon: React.ReactNode;
   title: string;
   description: string;
   delay: number;
+  price?: string;
 }
 
-const ServiceCard = ({ icon, title, description, delay }: ServiceCardProps) => {
+const ServiceCard = ({ icon, title, description, delay, price }: ServiceCardProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   
@@ -56,6 +56,7 @@ const ServiceCard = ({ icon, title, description, delay }: ServiceCardProps) => {
         {icon}
       </div>
       <h3 className="text-xl font-bold mb-3">{title}</h3>
+      {price && <p className="text-primary font-bold mb-3">{price}</p>}
       <p className="text-foreground/70 mb-4">{description}</p>
       <Link 
         to="/services" 
@@ -73,12 +74,14 @@ const Services = () => {
       icon: <Globe className="h-7 w-7" />,
       title: "Site Vitrine",
       description: "Présentez votre entreprise avec élégance. Idéal pour les PME et les indépendants.",
+      price: "249,90€",
       delay: 1
     },
     {
       icon: <ShoppingCart className="h-7 w-7" />,
       title: "E-commerce",
       description: "Lancez votre boutique en ligne et boostez vos ventes avec une expérience d'achat optimale.",
+      price: "790€",
       delay: 2
     },
     {
