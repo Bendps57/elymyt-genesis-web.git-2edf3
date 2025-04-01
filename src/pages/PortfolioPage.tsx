@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -18,25 +17,41 @@ interface Project {
   solution: string;
   results: string[];
   technologies: string[];
-  link?: string;
+  url?: string;
 }
 
 const projects: Project[] = [
   {
-    id: "nexus-innovations",
-    title: "Nexus Innovations",
+    id: "vitall-securite",
+    title: "Vitall Sécurité",
     category: "Site Vitrine",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1200&h=800&q=80",
-    description: "Refonte complète du site vitrine pour une entreprise technologique en pleine croissance.",
-    challenge: "L'ancien site de Nexus Innovations n'était pas responsive et ne reflétait pas leur positionnement haut de gamme dans le secteur technologique. Ils avaient besoin d'une refonte complète pour améliorer leur image de marque et générer plus de leads.",
-    solution: "Création d'un site vitrine moderne avec un design épuré et professionnel. Mise en place d'une structure optimisée pour le référencement et développement d'une expérience utilisateur intuitive sur tous les appareils.",
+    image: "https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?auto=format&fit=crop&w=1200&h=800&q=80",
+    description: "Site vitrine pour une entreprise de sécurité et de vidéosurveillance.",
+    challenge: "Vitall Sécurité avait besoin d'un site professionnel pour présenter ses services de sécurité et de vidéosurveillance, tout en générant de nouveaux prospects.",
+    solution: "Création d'un site vitrine moderne avec une structure claire mettant en avant les différents services, ainsi qu'un formulaire de contact optimisé pour la conversion.",
     results: [
-      "Augmentation du trafic de 40% après la refonte",
-      "Amélioration du taux de rebond de 65% à 30%",
-      "Augmentation des demandes de contact de 125%"
+      "Amélioration de la visibilité en ligne",
+      "Augmentation du nombre de demandes de devis",
+      "Meilleur positionnement sur les moteurs de recherche"
     ],
-    technologies: ["React", "Tailwind CSS", "NextJS", "Contentful CMS"],
-    link: "#"
+    technologies: ["WordPress", "CSS personnalisé", "PHP", "JavaScript"],
+    url: "https://www.vitallsecurite.fr"
+  },
+  {
+    id: "centre-formation-lorraine",
+    title: "Centre de Formation Lorraine",
+    category: "Site Vitrine",
+    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&h=800&q=80",
+    description: "Plateforme dédiée à la formation professionnelle en Lorraine.",
+    challenge: "Le Centre de Formation Lorraine avait besoin d'un site permettant de présenter leur catalogue de formations et de faciliter les inscriptions en ligne.",
+    solution: "Développement d'une plateforme intuitive avec présentation détaillée des formations proposées et intégration d'un système d'inscription en ligne.",
+    results: [
+      "Augmentation des inscriptions aux formations",
+      "Réduction du temps consacré à la gestion administrative",
+      "Meilleure visibilité de l'offre de formation"
+    ],
+    technologies: ["WordPress", "Elementor", "PHP", "Formulaires personnalisés"],
+    url: "https://www.centredeformationlorraine.fr"
   },
   {
     id: "eco-shop",
@@ -52,7 +67,7 @@ const projects: Project[] = [
       "Réduction du taux d'abandon de panier de 40%"
     ],
     technologies: ["WooCommerce", "WordPress", "PHP", "MySQL", "Stripe"],
-    link: "#"
+    url: ""
   },
   {
     id: "travelwise",
@@ -68,7 +83,7 @@ const projects: Project[] = [
       "Revenus d'affiliation multipliés par 3"
     ],
     technologies: ["Gatsby", "React", "GraphQL", "Netlify CMS", "APIs externes"],
-    link: "#"
+    url: ""
   },
   {
     id: "fitlifepro",
@@ -84,7 +99,7 @@ const projects: Project[] = [
       "Taux de satisfaction client de 98%"
     ],
     technologies: ["WordPress", "Elementor Pro", "WooCommerce Bookings", "PHP"],
-    link: "#"
+    url: "#"
   },
   {
     id: "tech-solutions",
@@ -100,7 +115,7 @@ const projects: Project[] = [
       "Amélioration de la satisfaction client de 40%"
     ],
     technologies: ["React", "Node.js", "Express", "MongoDB", "Redux", "JWT"],
-    link: "#"
+    url: "#"
   },
   {
     id: "artisans-marketplace",
@@ -116,7 +131,7 @@ const projects: Project[] = [
       "Taux de satisfaction vendeur de 94%"
     ],
     technologies: ["Laravel", "Vue.js", "MySQL", "AWS", "Stripe Connect"],
-    link: "#"
+    url: "#"
   }
 ];
 
@@ -157,7 +172,6 @@ const PortfolioPage = () => {
     }
   }, [activeCategory]);
   
-  // Check if URL has a project ID to show
   useEffect(() => {
     const hash = window.location.hash.substring(1);
     if (hash) {
@@ -247,7 +261,6 @@ const PortfolioPage = () => {
         </div>
       </section>
       
-      {/* Project Details Modal */}
       {selectedProject && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 overscroll-contain">
           <div className="bg-white dark:bg-elimyt-dark/95 rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-scale-in">
@@ -301,9 +314,9 @@ const PortfolioPage = () => {
                 </div>
                 
                 <div className="flex gap-4 mt-6">
-                  {selectedProject.link && (
+                  {selectedProject.url && (
                     <Button asChild className="bg-gradient">
-                      <a href={selectedProject.link} target="_blank" rel="noopener noreferrer">
+                      <a href={selectedProject.url} target="_blank" rel="noopener noreferrer">
                         Visiter le site
                         <ExternalLink className="ml-2 h-4 w-4" />
                       </a>

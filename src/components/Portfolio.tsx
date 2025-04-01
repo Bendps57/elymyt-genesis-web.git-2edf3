@@ -11,19 +11,30 @@ interface Project {
   image: string;
   description: string;
   results: string;
+  url?: string;
 }
 
 const projects: Project[] = [
   {
-    id: "project1",
-    title: "Nexus Innovations",
+    id: "vitall-securite",
+    title: "Vitall Sécurité",
     category: "Site Vitrine",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=600&h=400&q=80",
-    description: "Refonte complète du site web pour une entreprise technologique en pleine croissance.",
-    results: "Augmentation du trafic de 40% après la refonte"
+    image: "https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?auto=format&fit=crop&w=600&h=400&q=80",
+    description: "Site vitrine pour une entreprise de sécurité et de vidéosurveillance.",
+    results: "Amélioration de la visibilité en ligne et acquisition de nouveaux clients",
+    url: "https://www.vitallsecurite.fr"
   },
   {
-    id: "project2",
+    id: "centre-formation-lorraine",
+    title: "Centre de Formation Lorraine",
+    category: "Site Vitrine",
+    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&h=400&q=80",
+    description: "Plateforme dédiée à la formation professionnelle en Lorraine.",
+    results: "Augmentation des inscriptions aux formations et meilleure visibilité",
+    url: "https://www.centredeformationlorraine.fr"
+  },
+  {
+    id: "eco-shop",
     title: "Eco-Shop",
     category: "E-commerce",
     image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=600&h=400&q=80",
@@ -31,20 +42,12 @@ const projects: Project[] = [
     results: "Taux de conversion amélioré de 25%"
   },
   {
-    id: "project3",
+    id: "travelwise",
     title: "TravelWise",
     category: "Blog",
     image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600&h=400&q=80",
     description: "Blog de voyage avec intégration de systèmes de réservation et de conseils personnalisés.",
     results: "12,000 visiteurs mensuels en 6 mois"
-  },
-  {
-    id: "project4",
-    title: "FitLifePro",
-    category: "Site Vitrine",
-    image: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&w=600&h=400&q=80",
-    description: "Site pour un coach sportif avec système de réservation de séances intégré.",
-    results: "Acquisition de 50 nouveaux clients par mois"
   }
 ];
 
@@ -142,9 +145,16 @@ const Portfolio = () => {
                 <div className="bg-white/20 rounded-lg px-3 py-2 text-white text-sm mb-4 w-fit">
                   <span className="font-bold">Résultats:</span> {project.results}
                 </div>
-                <Link to={`/portfolio/${project.id}`} className="text-white hover:text-white/90 inline-flex items-center font-medium">
-                  Voir le projet <ExternalLink className="ml-1 h-4 w-4" />
-                </Link>
+                <div className="flex items-center gap-2">
+                  <Link to={`/portfolio/${project.id}`} className="text-white hover:text-white/90 inline-flex items-center font-medium">
+                    Voir le projet <ArrowRight className="ml-1 h-4 w-4" />
+                  </Link>
+                  {project.url && (
+                    <a href={project.url} target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/90 inline-flex items-center font-medium ml-4">
+                      Visiter le site <ExternalLink className="ml-1 h-4 w-4" />
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           ))}

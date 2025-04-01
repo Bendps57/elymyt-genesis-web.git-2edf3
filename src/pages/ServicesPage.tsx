@@ -87,14 +87,14 @@ const services: ServiceProps[] = [
       "Optimisation du référencement",
       "Migration de contenu"
     ],
-    price: "À partir de 1490€",
+    price: "Sur devis",
     features: [
       "Audit de l'existant",
       "Nouveau design",
       "Migration du contenu",
       "SEO avancé",
       "Formation à l'utilisation",
-      "Livraison sous 4 semaines"
+      "Devis personnalisé"
     ]
   }
 ];
