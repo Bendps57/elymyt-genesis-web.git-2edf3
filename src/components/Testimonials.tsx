@@ -28,10 +28,10 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 3,
-    name: "Sophie Leroux",
-    company: "Boutique Mode",
-    content: "Je cherchais un partenaire fiable pour créer mon site vitrine, et eLimyt a dépassé toutes mes attentes. Le site est magnifique et j'ai déjà reçu de nombreux compliments de mes clients.",
-    rating: 4
+    name: "Céline",
+    company: "Gérante, TMLC Services, cabinet comptable",
+    content: "Je cherchais un partenaire fiable pour créer le site de mon cabinet comptable, et eLimyt a dépassé toutes mes attentes. Le site est professionnel et j'ai déjà reçu de nombreux compliments de mes clients.",
+    rating: 5
   },
   {
     id: 4,

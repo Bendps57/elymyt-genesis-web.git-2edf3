@@ -1,5 +1,6 @@
+
 import { Link } from "react-router-dom";
-import { Facebook, Linkedin, ArrowUp, MessageSquare, Smartphone } from "lucide-react";
+import { ArrowUp, MessageSquare, Smartphone } from "lucide-react";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -31,8 +32,6 @@ const Footer = () => {
   ];
   
   const socialLinks = [
-    { name: "Facebook", icon: <Facebook className="h-5 w-5" />, href: "https://facebook.com" },
-    { name: "LinkedIn", icon: <Linkedin className="h-5 w-5" />, href: "https://fr.linkedin.com/in/benoit-wemmert-6a4264100" },
     { name: "Snapchat", icon: <MessageSquare className="h-5 w-5" />, href: "https://snapchat.com/add/brebisegare" },
     { name: "WhatsApp", icon: <Smartphone className="h-5 w-5" />, href: "https://wa.me/33789026890" }
   ];

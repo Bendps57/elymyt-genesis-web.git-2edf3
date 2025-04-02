@@ -17,7 +17,7 @@ export const projects: Project[] = [
     id: "vitall-securite",
     title: "Vitall Sécurité",
     category: "Site Vitrine",
-    image: "https://images.unsplash.com/photo-1626175330413-8e3785e01b29?auto=format&fit=crop&w=1200&h=800&q=80",
+    image: "https://images.unsplash.com/photo-1521312706499-ffd150c7f237?auto=format&fit=crop&w=1200&h=800&q=80",
     description: "Site vitrine pour une entreprise de sécurité et de vidéosurveillance.",
     challenge: "Vitall Sécurité avait besoin d'un site professionnel pour présenter ses services de sécurité et de vidéosurveillance, tout en générant de nouveaux prospects.",
     solution: "Création d'un site vitrine moderne avec une structure claire mettant en avant les différents services, ainsi qu'un formulaire de contact optimisé pour la conversion.",
@@ -65,7 +65,7 @@ export const projects: Project[] = [
     id: "squad-esports",
     title: "Squad eSports",
     category: "Blog",
-    image: "https://images.unsplash.com/photo-1542751110-9a0b214cdc26?auto=format&fit=crop&w=1200&h=800&q=80",
+    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&h=800&q=80",
     description: "Plateforme d'actualités et de contenu sur l'univers du gaming et des compétitions eSport.",
     challenge: "Squad eSports cherchait à créer un média en ligne dédié aux actualités eSport avec un système de gestion de contenu efficace et une interface attrayante pour les lecteurs.",
     solution: "Développement d'une plateforme de blog optimisée pour le référencement avec catégorisation avancée, système de commentaires, et intégration de médias sociaux.",
@@ -76,37 +76,5 @@ export const projects: Project[] = [
     ],
     technologies: ["WordPress", "Gutenberg", "Advanced Custom Fields", "SEO Yoast", "Google Analytics"],
     url: "https://squadesports.com"
-  },
-  {
-    id: "fitlifepro",
-    title: "FitLifePro",
-    category: "Site Vitrine",
-    image: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&w=1200&h=800&q=80",
-    description: "Site pour un coach sportif avec système de réservation de séances intégré.",
-    challenge: "FitLifePro avait besoin d'un site vitrine professionnel pour présenter ses services de coaching, mais également d'un système de réservation en ligne pour faciliter la prise de rendez-vous.",
-    solution: "Développement d'un site vitrine dynamique avec intégration d'un système de réservation personnalisé, permettant aux clients de réserver et de payer leurs séances en ligne.",
-    results: [
-      "Acquisition de 50 nouveaux clients par mois",
-      "Réduction de 70% du temps consacré à la gestion administrative",
-      "Taux de satisfaction client de 98%"
-    ],
-    technologies: ["WordPress", "Elementor Pro", "WooCommerce Bookings", "PHP"],
-    url: "#"
-  },
-  {
-    id: "artisans-marketplace",
-    title: "Artisans Marketplace",
-    category: "E-commerce",
-    image: "https://images.unsplash.com/photo-1621452773781-0f992fd1f5cb?auto=format&fit=crop&w=1200&h=800&q=80",
-    description: "Place de marché pour artisans permettant à plusieurs vendeurs de proposer leurs créations.",
-    challenge: "Créer une plateforme multi-vendeurs permettant à des artisans de vendre leurs créations, avec un système de commission et une gestion indépendante pour chaque boutique.",
-    solution: "Développement d'une marketplace complète avec inscription des vendeurs, gestion des boutiques individuelles, système de paiement multi-vendeurs et fonctionnalités sociales.",
-    results: [
-      "Plus de 100 artisans inscrits le premier mois",
-      "Chiffre d'affaires de 50 000€ après 6 mois",
-      "Taux de satisfaction vendeur de 94%"
-    ],
-    technologies: ["Laravel", "Vue.js", "MySQL", "AWS", "Stripe Connect"],
-    url: "#"
   }
 ];

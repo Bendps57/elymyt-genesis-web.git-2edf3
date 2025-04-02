@@ -59,7 +59,7 @@ const Hero = () => {
                 <span className="inline-block w-0.5 h-8 bg-foreground animate-pulse ml-1"></span>
               </span>
             </h1>
-            <p className={`text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto mb-8 transition-all delay-300 duration-700 mt-4 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+            <p className={`text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto transition-all delay-300 duration-700 mt-8 mb-10 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
               Sites professionnels à prix mini, livrés en 5 jours. Qualité garantie pour maximiser votre impact en ligne.
             </p>
             <div className={`flex flex-col sm:flex-row gap-4 justify-center transition-all delay-500 duration-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
