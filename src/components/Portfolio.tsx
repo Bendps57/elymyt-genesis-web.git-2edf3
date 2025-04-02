@@ -3,55 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ExternalLink } from "lucide-react";
-
-interface Project {
-  id: string;
-  title: string;
-  category: string;
-  image: string;
-  description: string;
-  results: string;
-  url: string;
-}
-
-const projects: Project[] = [
-  {
-    id: "vitall-securite",
-    title: "Vitall Sécurité",
-    category: "Site Vitrine",
-    image: "https://images.unsplash.com/photo-1626175330413-8e3785e01b29?auto=format&fit=crop&w=600&h=400&q=80",
-    description: "Site vitrine pour une entreprise de sécurité et de vidéosurveillance.",
-    results: "Amélioration de la visibilité en ligne et acquisition de nouveaux clients",
-    url: "https://www.vitallsecurite.fr"
-  },
-  {
-    id: "centre-formation-lorraine",
-    title: "Centre de Formation Lorraine",
-    category: "Site Vitrine",
-    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&h=400&q=80",
-    description: "Plateforme dédiée à la formation professionnelle en Lorraine.",
-    results: "Augmentation des inscriptions aux formations et meilleure visibilité",
-    url: "https://www.centredeformationlorraine.fr"
-  },
-  {
-    id: "pulsar-esport",
-    title: "Pulsar eSport",
-    category: "E-commerce",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&h=400&q=80",
-    description: "Site e-commerce et plateforme communautaire pour une équipe d'eSport professionnelle.",
-    results: "Croissance de la base de fans et augmentation des ventes de produits dérivés",
-    url: "https://pulsar-esport.fr"
-  },
-  {
-    id: "squad-esports",
-    title: "Squad eSports",
-    category: "Blog",
-    image: "https://images.unsplash.com/photo-1542751110-9a0b214cdc26?auto=format&fit=crop&w=600&h=400&q=80",
-    description: "Plateforme d'actualités et de contenu sur l'univers du gaming et des compétitions eSport.",
-    results: "12,000 visiteurs mensuels et forte engagement de la communauté",
-    url: "https://squadesports.com"
-  }
-];
+import { projects } from "@/data/portfolioProjects";
 
 const Portfolio = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -75,6 +27,9 @@ const Portfolio = () => {
     return () => observer.disconnect();
   }, []);
   
+  // Display only the first 4 projects
+  const displayedProjects = projects.slice(0, 4);
+  
   return (
     <section id="portfolio" ref={sectionRef} className="section-padding">
       <div className="container mx-auto px-4 md:px-6">
@@ -92,7 +47,7 @@ const Portfolio = () => {
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          {projects.map((project, index) => (
+          {displayedProjects.map((project, index) => (
             <div 
               key={project.id}
               className="group relative overflow-hidden rounded-xl card-hover transition-all duration-500"
@@ -114,7 +69,7 @@ const Portfolio = () => {
                 <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{project.title}</h3>
                 <p className="text-white/90 mb-2">{project.description}</p>
                 <div className="bg-white/20 rounded-lg px-3 py-2 text-white text-sm mb-4 w-fit">
-                  <span className="font-bold">Résultats:</span> {project.results}
+                  <span className="font-bold">Résultats:</span> {project.results[0]}
                 </div>
                 <div className="flex items-center gap-2">
                   <Link to={`/portfolio/${project.id}`} className="text-white hover:text-white/90 inline-flex items-center font-medium">
