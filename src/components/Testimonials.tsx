@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,7 +7,6 @@ interface Testimonial {
   id: number;
   name: string;
   company: string;
-  avatar: string;
   content: string;
   rating: number;
 }
@@ -16,7 +16,6 @@ const testimonials: Testimonial[] = [
     id: 1,
     name: "Adil",
     company: "Gérant, Vitall Sécurité",
-    avatar: "https://randomuser.me/api/portraits/men/43.jpg",
     content: "eLimyt a créé un site web qui répond parfaitement à nos besoins. Notre entreprise de sécurité avait besoin d'un site professionnel qui inspire confiance, et c'est exactement ce que nous avons obtenu. Le processus a été simple et rapide, et le résultat est impressionnant.",
     rating: 5
   },
@@ -24,7 +23,6 @@ const testimonials: Testimonial[] = [
     id: 2,
     name: "Eric",
     company: "Responsable de formation, Centre de Formation Lorraine",
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
     content: "Nous cherchions à moderniser notre présence en ligne pour mieux présenter nos formations. eLimyt a dépassé nos attentes avec un site intuitif qui a considérablement augmenté nos inscriptions. Leur expertise technique et leur compréhension de nos besoins ont fait toute la différence.",
     rating: 5
   },
@@ -32,7 +30,6 @@ const testimonials: Testimonial[] = [
     id: 3,
     name: "Sophie Leroux",
     company: "Boutique Mode",
-    avatar: "https://randomuser.me/api/portraits/women/68.jpg",
     content: "Je cherchais un partenaire fiable pour créer mon site vitrine, et eLimyt a dépassé toutes mes attentes. Le site est magnifique et j'ai déjà reçu de nombreux compliments de mes clients.",
     rating: 4
   },
@@ -40,7 +37,6 @@ const testimonials: Testimonial[] = [
     id: 4,
     name: "Pierre Dubois",
     company: "Conseil Immobilier",
-    avatar: "https://randomuser.me/api/portraits/men/15.jpg",
     content: "Une équipe professionnelle et réactive qui a su comprendre nos besoins et les traduire en un site web performant. Notre trafic a doublé en trois mois !",
     rating: 5
   }
@@ -125,14 +121,7 @@ const Testimonials = () => {
                     key={testimonial.id} 
                     className="min-w-full p-8 md:p-12"
                   >
-                    <div className="flex flex-col md:flex-row md:items-center gap-6">
-                      <div className="flex-shrink-0">
-                        <img 
-                          src={testimonial.avatar} 
-                          alt={testimonial.name} 
-                          className="w-24 h-24 rounded-full border-4 border-accent/20"
-                        />
-                      </div>
+                    <div className="flex flex-col gap-6">
                       <div className="flex-1">
                         <div className="flex items-center mb-2">
                           {Array.from({ length: 5 }).map((_, i) => (

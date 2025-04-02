@@ -18,14 +18,14 @@ const Legal = () => {
                 Le site eLimyt est édité par eLimyt, entreprise individuelle dont le siège social est situé au 60 rue de Verdun, 57700 Hayange, France.
               </p>
               <p>
-                <strong>Responsable de publication :</strong> Ben Wemmert<br />
+                <strong>Responsable de publication :</strong> Benoit Wemmert<br />
                 <strong>Téléphone :</strong> +33 7 89 02 68 90<br />
                 <strong>Email :</strong> ben.wemmert@gmail.com
               </p>
               
               <h2>2. Hébergement</h2>
               <p>
-                Le site eLimyt est hébergé par [Nom de l'hébergeur], dont le siège social est situé à [Adresse de l'hébergeur].
+                Le site eLimyt est hébergé par HOSTINGER, dont le siège social est situé à HOSTINGER INTERNATIONAL LTD, 61 Lordou Vironos Street, 6023 Larnaca, Chypre.
               </p>
               
               <h2>3. Propriété intellectuelle</h2>

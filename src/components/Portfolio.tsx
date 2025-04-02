@@ -11,7 +11,7 @@ interface Project {
   image: string;
   description: string;
   results: string;
-  url?: string;
+  url: string;
 }
 
 const projects: Project[] = [
@@ -19,7 +19,7 @@ const projects: Project[] = [
     id: "vitall-securite",
     title: "Vitall Sécurité",
     category: "Site Vitrine",
-    image: "https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?auto=format&fit=crop&w=600&h=400&q=80",
+    image: "https://images.unsplash.com/photo-1626175330413-8e3785e01b29?auto=format&fit=crop&w=600&h=400&q=80",
     description: "Site vitrine pour une entreprise de sécurité et de vidéosurveillance.",
     results: "Amélioration de la visibilité en ligne et acquisition de nouveaux clients",
     url: "https://www.vitallsecurite.fr"
@@ -40,24 +40,20 @@ const projects: Project[] = [
     image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&h=400&q=80",
     description: "Site e-commerce et plateforme communautaire pour une équipe d'eSport professionnelle.",
     results: "Croissance de la base de fans et augmentation des ventes de produits dérivés",
-    url: "https://pulsar-esport.fr/"
+    url: "https://pulsar-esport.fr"
   },
   {
     id: "squad-esports",
     title: "Squad eSports",
     category: "Blog",
-    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&h=400&q=80",
+    image: "https://images.unsplash.com/photo-1542751110-9a0b214cdc26?auto=format&fit=crop&w=600&h=400&q=80",
     description: "Plateforme d'actualités et de contenu sur l'univers du gaming et des compétitions eSport.",
     results: "12,000 visiteurs mensuels et forte engagement de la communauté",
-    url: "https://squadesports.com/"
+    url: "https://squadesports.com"
   }
 ];
 
-const categories = ["Tous", "Site Vitrine", "E-commerce", "Blog"];
-
 const Portfolio = () => {
-  const [activeCategory, setActiveCategory] = useState("Tous");
-  const [filteredProjects, setFilteredProjects] = useState(projects);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   
@@ -79,16 +75,6 @@ const Portfolio = () => {
     return () => observer.disconnect();
   }, []);
   
-  useEffect(() => {
-    if (activeCategory === "Tous") {
-      setFilteredProjects(projects);
-    } else {
-      setFilteredProjects(
-        projects.filter((project) => project.category === activeCategory)
-      );
-    }
-  }, [activeCategory]);
-  
   return (
     <section id="portfolio" ref={sectionRef} className="section-padding">
       <div className="container mx-auto px-4 md:px-6">
@@ -101,29 +87,12 @@ const Portfolio = () => {
           </p>
         </div>
         
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant={activeCategory === category ? "default" : "outline"}
-              className={`rounded-full ${
-                activeCategory === category 
-                  ? "bg-gradient" 
-                  : "hover:border-primary/50"
-              }`}
-              onClick={() => setActiveCategory(category)}
-            >
-              {category}
-            </Button>
-          ))}
-        </div>
-        
         <div 
           className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 transition-opacity duration-500 ${
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          {filteredProjects.map((project, index) => (
+          {projects.map((project, index) => (
             <div 
               key={project.id}
               className="group relative overflow-hidden rounded-xl card-hover transition-all duration-500"
@@ -151,11 +120,9 @@ const Portfolio = () => {
                   <Link to={`/portfolio/${project.id}`} className="text-white hover:text-white/90 inline-flex items-center font-medium">
                     Voir le projet <ArrowRight className="ml-1 h-4 w-4" />
                   </Link>
-                  {project.url && (
-                    <a href={project.url} target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/90 inline-flex items-center font-medium ml-4">
-                      Visiter le site <ExternalLink className="ml-1 h-4 w-4" />
-                    </a>
-                  )}
+                  <a href={project.url} target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/90 inline-flex items-center font-medium ml-4">
+                    Visiter le site <ExternalLink className="ml-1 h-4 w-4" />
+                  </a>
                 </div>
               </div>
             </div>

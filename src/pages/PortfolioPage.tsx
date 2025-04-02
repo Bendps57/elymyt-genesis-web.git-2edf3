@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -17,7 +18,7 @@ interface Project {
   solution: string;
   results: string[];
   technologies: string[];
-  url?: string;
+  url: string;
 }
 
 const projects: Project[] = [
@@ -25,7 +26,7 @@ const projects: Project[] = [
     id: "vitall-securite",
     title: "Vitall Sécurité",
     category: "Site Vitrine",
-    image: "https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?auto=format&fit=crop&w=1200&h=800&q=80",
+    image: "https://images.unsplash.com/photo-1626175330413-8e3785e01b29?auto=format&fit=crop&w=1200&h=800&q=80",
     description: "Site vitrine pour une entreprise de sécurité et de vidéosurveillance.",
     challenge: "Vitall Sécurité avait besoin d'un site professionnel pour présenter ses services de sécurité et de vidéosurveillance, tout en générant de nouveaux prospects.",
     solution: "Création d'un site vitrine moderne avec une structure claire mettant en avant les différents services, ainsi qu'un formulaire de contact optimisé pour la conversion.",
@@ -67,13 +68,13 @@ const projects: Project[] = [
       "Centralisation efficace de la présence en ligne de l'équipe"
     ],
     technologies: ["WordPress", "WooCommerce", "BuddyPress", "JavaScript", "PHP"],
-    url: "https://pulsar-esport.fr/"
+    url: "https://pulsar-esport.fr"
   },
   {
     id: "squad-esports",
     title: "Squad eSports",
     category: "Blog",
-    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&h=800&q=80",
+    image: "https://images.unsplash.com/photo-1542751110-9a0b214cdc26?auto=format&fit=crop&w=1200&h=800&q=80",
     description: "Plateforme d'actualités et de contenu sur l'univers du gaming et des compétitions eSport.",
     challenge: "Squad eSports cherchait à créer un média en ligne dédié aux actualités eSport avec un système de gestion de contenu efficace et une interface attrayante pour les lecteurs.",
     solution: "Développement d'une plateforme de blog optimisée pour le référencement avec catégorisation avancée, système de commentaires, et intégration de médias sociaux.",
@@ -83,7 +84,7 @@ const projects: Project[] = [
       "Monétisation efficace via des partenariats stratégiques"
     ],
     technologies: ["WordPress", "Gutenberg", "Advanced Custom Fields", "SEO Yoast", "Google Analytics"],
-    url: "https://squadesports.com/"
+    url: "https://squadesports.com"
   },
   {
     id: "fitlifepro",
@@ -119,10 +120,7 @@ const projects: Project[] = [
   }
 ];
 
-const categories = ["Tous", "Site Vitrine", "E-commerce", "Blog", "Application Web"];
-
 const PortfolioPage = () => {
-  const [activeCategory, setActiveCategory] = useState("Tous");
   const [filteredProjects, setFilteredProjects] = useState(projects);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -145,16 +143,6 @@ const PortfolioPage = () => {
     
     return () => observer.disconnect();
   }, []);
-  
-  useEffect(() => {
-    if (activeCategory === "Tous") {
-      setFilteredProjects(projects);
-    } else {
-      setFilteredProjects(
-        projects.filter((project) => project.category === activeCategory)
-      );
-    }
-  }, [activeCategory]);
   
   useEffect(() => {
     const hash = window.location.hash.substring(1);
@@ -185,23 +173,6 @@ const PortfolioPage = () => {
               Découvrez nos réalisations récentes et comment nous avons aidé nos clients 
               à atteindre leurs objectifs avec des solutions web sur mesure.
             </p>
-          </div>
-          
-          <div className="flex flex-wrap justify-center gap-2 mb-10">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                variant={activeCategory === category ? "default" : "outline"}
-                className={`rounded-full ${
-                  activeCategory === category 
-                    ? "bg-gradient" 
-                    : "hover:border-primary/50"
-                }`}
-                onClick={() => setActiveCategory(category)}
-              >
-                {category}
-              </Button>
-            ))}
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -298,14 +269,12 @@ const PortfolioPage = () => {
                 </div>
                 
                 <div className="flex gap-4 mt-6">
-                  {selectedProject.url && (
-                    <Button asChild className="bg-gradient">
-                      <a href={selectedProject.url} target="_blank" rel="noopener noreferrer">
-                        Visiter le site
-                        <ExternalLink className="ml-2 h-4 w-4" />
-                      </a>
-                    </Button>
-                  )}
+                  <Button asChild className="bg-gradient">
+                    <a href={selectedProject.url} target="_blank" rel="noopener noreferrer">
+                      Visiter le site
+                      <ExternalLink className="ml-2 h-4 w-4" />
+                    </a>
+                  </Button>
                   <Button
                     asChild
                     variant="outline"
