@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Hero = () => {
   const [loaded, setLoaded] = useState(false);
   const [titleWords, setTitleWords] = useState<string[]>([]);
   const fullTitle = "Création de Sites Web Innovants et Performants";
+  const isMobile = useIsMobile();
   
   useEffect(() => {
     setLoaded(true);
@@ -59,7 +61,9 @@ const Hero = () => {
                 <span className="inline-block w-0.5 h-8 bg-foreground animate-pulse ml-1"></span>
               </span>
             </h1>
-            <p className={`text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto transition-all delay-300 duration-700 mt-8 mb-10 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+            <p className={`text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto transition-all delay-300 duration-700 ${
+              isMobile ? "mt-24" : "mt-8"
+            } mb-10 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
               Sites professionnels à prix mini, livrés en 5 jours. Qualité garantie pour maximiser votre impact en ligne.
             </p>
             <div className={`flex flex-col sm:flex-row gap-4 justify-center transition-all delay-500 duration-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
