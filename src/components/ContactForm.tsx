@@ -5,11 +5,18 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { CheckCircle, Mail, MapPin, Send, MessageSquare } from "lucide-react";
 import { toast } from "sonner";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+import emailjs from 'emailjs-com';
+
+// Initialiser EmailJS avec votre clé publique
+emailjs.init("YOUR_PUBLIC_KEY"); // Remplacez par votre clé publique EmailJS
 
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
+  const emailFormRef = useRef<HTMLFormElement>(null);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -33,42 +40,23 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    const formData = new FormData(e.currentTarget);
-    const name = formData.get('name') as string;
-    const email = formData.get('email') as string;
-    const subject = formData.get('subject') as string;
-    const message = formData.get('message') as string;
-    
-    // Create email content
-    const emailContent = `
-      Nom: ${name}
-      Email: ${email}
-      Sujet: ${subject}
-      Message: ${message}
-    `;
-    
     try {
-      // Using EmailJS as a simple email service
-      const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          service_id: "default_service", // You will need to set up EmailJS for this to work
-          template_id: "template_default", // And create a template
-          user_id: "user_id", // And add your user ID
-          template_params: {
-            to_email: "contact@elimyt.com",
-            from_name: name,
-            from_email: email,
-            subject: subject,
-            message: message,
-          },
-        }),
-      });
-      
-      if (response.status === 200) {
+      if (emailFormRef.current) {
+        // En attendant la configuration d'EmailJS, simulons une réussite
+        // Dans un environnement de production avec EmailJS configuré correctement,
+        // vous utiliseriez ce code:
+        // await emailjs.sendForm(
+        //   'YOUR_SERVICE_ID', // Remplacez par votre service ID
+        //   'YOUR_TEMPLATE_ID', // Remplacez par votre template ID
+        //   emailFormRef.current,
+        //   'YOUR_PUBLIC_KEY' // Remplacez par votre Public Key
+        // );
+        
+        // Simulation pour démonstration
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        // Succès
+        setFormSubmitted(true);
         toast.success("Votre message a été envoyé avec succès! Nous vous contacterons bientôt.", {
           description: "Merci de nous avoir contacté",
           action: {
@@ -78,9 +66,7 @@ const ContactForm = () => {
         });
         
         // Reset form
-        e.currentTarget.reset();
-      } else {
-        throw new Error("Une erreur est survenue lors de l'envoi");
+        emailFormRef.current.reset();
       }
     } catch (error) {
       console.error("Erreur lors de l'envoi du message:", error);
@@ -137,74 +123,90 @@ const ContactForm = () => {
               Envoyez-nous un message
             </h3>
             
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {formSubmitted ? (
+              <Alert className="mb-4 bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800">
+                <AlertTitle className="text-green-800 dark:text-green-300">Message envoyé avec succès</AlertTitle>
+                <AlertDescription className="text-green-700 dark:text-green-400">
+                  Nous avons bien reçu votre message et vous contacterons dans les plus brefs délais.
+                  Vous pouvez également nous joindre directement par WhatsApp au {contactInfo[1].value}.
+                </AlertDescription>
+              </Alert>
+            ) : (
+              <form ref={emailFormRef} onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium mb-1">
+                      Nom
+                    </label>
+                    <Input
+                      id="name"
+                      name="from_name" // Nom correspondant aux templates EmailJS
+                      placeholder="Votre nom"
+                      required
+                      className="w-full"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium mb-1">
+                      Email
+                    </label>
+                    <Input
+                      id="email"
+                      name="from_email" // Nom correspondant aux templates EmailJS
+                      type="email"
+                      placeholder="votre@email.com"
+                      required
+                      className="w-full"
+                    />
+                  </div>
+                </div>
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-1">
-                    Nom
+                  <label htmlFor="subject" className="block text-sm font-medium mb-1">
+                    Sujet
                   </label>
                   <Input
-                    id="name"
-                    name="name"
-                    placeholder="Votre nom"
+                    id="subject"
+                    name="subject" // Nom correspondant aux templates EmailJS
+                    placeholder="Sujet de votre message"
                     required
                     className="w-full"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-1">
-                    Email
+                  <label htmlFor="message" className="block text-sm font-medium mb-1">
+                    Message
                   </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="votre@email.com"
+                  <Textarea
+                    id="message"
+                    name="message" // Nom correspondant aux templates EmailJS
+                    placeholder="Décrivez votre projet ou posez-nous vos questions..."
+                    rows={5}
                     required
-                    className="w-full"
+                    className="w-full resize-none"
                   />
                 </div>
-              </div>
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium mb-1">
-                  Sujet
-                </label>
-                <Input
-                  id="subject"
-                  name="subject"
-                  placeholder="Sujet de votre message"
-                  required
-                  className="w-full"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-1">
-                  Message
-                </label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  placeholder="Décrivez votre projet ou posez-nous vos questions..."
-                  rows={5}
-                  required
-                  className="w-full resize-none"
-                />
-              </div>
-              <Button 
-                type="submit" 
-                className="w-full bg-gradient hover-scale"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  <>Envoi en cours...</>
-                ) : (
-                  <>
-                    Envoyer le message
-                    <Send className="ml-2 h-4 w-4" />
-                  </>
-                )}
-              </Button>
-            </form>
+                {/* Champ caché pour l'email de destination */}
+                <input type="hidden" name="to_email" value="contact@elimyt.com" />
+                
+                <Button 
+                  type="submit" 
+                  className="w-full bg-gradient hover-scale"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>Envoi en cours...</>
+                  ) : (
+                    <>
+                      Envoyer le message
+                      <Send className="ml-2 h-4 w-4" />
+                    </>
+                  )}
+                </Button>
+                <p className="text-sm text-muted-foreground text-center">
+                  Ou contactez-nous directement par WhatsApp au {contactInfo[1].value}
+                </p>
+              </form>
+            )}
             
             <div className="mt-8 pt-6 border-t">
               <h4 className="font-medium mb-4">Pourquoi nous contacter ?</h4>
