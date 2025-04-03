@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { ArrowUp, MessageSquare, Smartphone } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -31,11 +31,6 @@ const Footer = () => {
     { name: "CGV", href: "/terms" }
   ];
   
-  const socialLinks = [
-    { name: "Snapchat", icon: <MessageSquare className="h-5 w-5" />, href: "https://snapchat.com/add/brebisegare" },
-    { name: "WhatsApp", icon: <Smartphone className="h-5 w-5" />, href: "https://wa.me/33789026890" }
-  ];
-  
   return (
     <footer className="bg-elimyt-dark text-white pt-16 pb-8 relative">
       <div className="container mx-auto px-4 md:px-6">
@@ -48,20 +43,6 @@ const Footer = () => {
               Agence web spécialisée dans la création de sites internet modernes, 
               performants et à prix attractifs.
             </p>
-            <div className="flex space-x-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors duration-300"
-                  aria-label={social.name}
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
           </div>
           
           <div>

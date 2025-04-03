@@ -15,12 +15,12 @@ const Legal = () => {
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <h2>1. Informations légales</h2>
               <p>
-                Le site eLimyt est édité par eLimyt, entreprise individuelle dont le siège social est situé au 60 rue de Verdun, 57700 Hayange, France.
+                Le site eLimyt est édité par eLimyt, entreprise individuelle dont le siège social est situé rue de Verdun, 57700 Hayange, France.
               </p>
               <p>
                 <strong>Responsable de publication :</strong> Benoit Wemmert<br />
-                <strong>Téléphone :</strong> +33 7 89 02 68 90<br />
-                <strong>Email :</strong> ben.wemmert@gmail.com
+                <strong>WhatsApp :</strong> +33 7 89 02 68 90<br />
+                <strong>Email :</strong> contact@elimyt.com
               </p>
               
               <h2>2. Hébergement</h2>

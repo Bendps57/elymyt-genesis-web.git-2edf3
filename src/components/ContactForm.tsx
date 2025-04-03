@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { CheckCircle, Mail, Phone, MapPin, Send } from "lucide-react";
+import { CheckCircle, Mail, MapPin, Send, MessageSquare } from "lucide-react";
 import { toast } from "sonner";
 
 const ContactForm = () => {
@@ -59,7 +59,7 @@ const ContactForm = () => {
           template_id: "template_default", // And create a template
           user_id: "user_id", // And add your user ID
           template_params: {
-            to_email: "ben.wemmert@gmail.com",
+            to_email: "contact@elimyt.com",
             from_name: name,
             from_email: email,
             subject: subject,
@@ -85,7 +85,7 @@ const ContactForm = () => {
     } catch (error) {
       console.error("Erreur lors de l'envoi du message:", error);
       toast.error("Une erreur est survenue lors de l'envoi de votre message", {
-        description: "Veuillez réessayer plus tard ou nous contacter directement par téléphone",
+        description: "Veuillez réessayer plus tard ou nous contacter directement par WhatsApp",
         action: {
           label: "Fermer",
           onClick: () => console.log("Toast closed")
@@ -100,17 +100,17 @@ const ContactForm = () => {
     {
       icon: <Mail className="h-5 w-5" />,
       label: "Email",
-      value: "ben.wemmert@gmail.com"
+      value: "contact@elimyt.com"
     },
     {
-      icon: <Phone className="h-5 w-5" />,
-      label: "Téléphone",
+      icon: <MessageSquare className="h-5 w-5" />,
+      label: "WhatsApp",
       value: "+33 7 89 02 68 90"
     },
     {
       icon: <MapPin className="h-5 w-5" />,
       label: "Adresse",
-      value: "60 rue de verdun, 57700 Hayange, France"
+      value: "rue de verdun 57700 Hayange"
     }
   ];
   
