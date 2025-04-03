@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ContactForm from "../components/ContactForm";
+import ChatWidget from "../components/chat/ChatWidget";
 
 const ContactPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -51,6 +52,9 @@ const ContactPage = () => {
       
       <ContactForm />
       <Footer />
+      
+      {/* Widget de chat WhatsApp */}
+      <ChatWidget initialMessage="Bonjour, je souhaite discuter de mon projet avec eLimyt..." />
     </div>
   );
 };
