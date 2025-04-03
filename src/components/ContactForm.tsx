@@ -6,10 +6,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { CheckCircle, Mail, MapPin, Send, MessageSquare } from "lucide-react";
 import { toast } from "sonner";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-import emailjs from 'emailjs-com';
-
-// Initialiser EmailJS avec votre clé publique
-emailjs.init("YOUR_PUBLIC_KEY"); // Remplacez par votre clé publique EmailJS
 
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -42,31 +38,33 @@ const ContactForm = () => {
     
     try {
       if (emailFormRef.current) {
-        // En attendant la configuration d'EmailJS, simulons une réussite
-        // Dans un environnement de production avec EmailJS configuré correctement,
-        // vous utiliseriez ce code:
-        // await emailjs.sendForm(
-        //   'YOUR_SERVICE_ID', // Remplacez par votre service ID
-        //   'YOUR_TEMPLATE_ID', // Remplacez par votre template ID
-        //   emailFormRef.current,
-        //   'YOUR_PUBLIC_KEY' // Remplacez par votre Public Key
-        // );
+        // Récupération du formulaire pour l'envoyer directement
+        const formData = new FormData(emailFormRef.current);
         
-        // Simulation pour démonstration
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        // Succès
-        setFormSubmitted(true);
-        toast.success("Votre message a été envoyé avec succès! Nous vous contacterons bientôt.", {
-          description: "Merci de nous avoir contacté",
-          action: {
-            label: "Fermer",
-            onClick: () => console.log("Toast closed")
-          }
+        const response = await fetch('https://formsubmit.co/contact@elimyt.com', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          },
         });
         
-        // Reset form
-        emailFormRef.current.reset();
+        if (response.ok) {
+          // Succès
+          setFormSubmitted(true);
+          toast.success("Votre message a été envoyé avec succès! Nous vous contacterons bientôt.", {
+            description: "Merci de nous avoir contacté",
+            action: {
+              label: "Fermer",
+              onClick: () => console.log("Toast closed")
+            }
+          });
+          
+          // Reset form
+          emailFormRef.current.reset();
+        } else {
+          throw new Error("Erreur réseau lors de l'envoi");
+        }
       }
     } catch (error) {
       console.error("Erreur lors de l'envoi du message:", error);
@@ -132,7 +130,19 @@ const ContactForm = () => {
                 </AlertDescription>
               </Alert>
             ) : (
-              <form ref={emailFormRef} onSubmit={handleSubmit} className="space-y-5">
+              <form 
+                ref={emailFormRef} 
+                onSubmit={handleSubmit} 
+                className="space-y-5"
+                action="https://formsubmit.co/contact@elimyt.com" 
+                method="POST"
+              >
+                {/* Configuration FormSubmit.co */}
+                <input type="hidden" name="_subject" value="Nouveau message depuis votre site web" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_next" value={window.location.href} />
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-1">
@@ -140,7 +150,7 @@ const ContactForm = () => {
                     </label>
                     <Input
                       id="name"
-                      name="from_name" // Nom correspondant aux templates EmailJS
+                      name="name"
                       placeholder="Votre nom"
                       required
                       className="w-full"
@@ -152,7 +162,7 @@ const ContactForm = () => {
                     </label>
                     <Input
                       id="email"
-                      name="from_email" // Nom correspondant aux templates EmailJS
+                      name="email"
                       type="email"
                       placeholder="votre@email.com"
                       required
@@ -166,7 +176,7 @@ const ContactForm = () => {
                   </label>
                   <Input
                     id="subject"
-                    name="subject" // Nom correspondant aux templates EmailJS
+                    name="subject"
                     placeholder="Sujet de votre message"
                     required
                     className="w-full"
@@ -178,15 +188,13 @@ const ContactForm = () => {
                   </label>
                   <Textarea
                     id="message"
-                    name="message" // Nom correspondant aux templates EmailJS
+                    name="message"
                     placeholder="Décrivez votre projet ou posez-nous vos questions..."
                     rows={5}
                     required
                     className="w-full resize-none"
                   />
                 </div>
-                {/* Champ caché pour l'email de destination */}
-                <input type="hidden" name="to_email" value="contact@elimyt.com" />
                 
                 <Button 
                   type="submit" 
