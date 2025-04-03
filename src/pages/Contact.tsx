@@ -1,8 +1,8 @@
 
+import { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ContactForm from "../components/ContactForm";
-import { useState, useEffect, useRef } from "react";
 
 const ContactPage = () => {
   const [isVisible, setIsVisible] = useState(false);
